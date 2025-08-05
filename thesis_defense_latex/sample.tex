@@ -15,7 +15,7 @@
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{xcolor}
 \usepackage{listings}
-
+\newcommand{\assert}[1]{\{#1\}}
 \usepackage[skins,theorems]{tcolorbox}
 \tcbset{highlight math style={enhanced,
   colframe=red,colback=white,arc=0pt,boxrule=1pt}}
@@ -373,58 +373,6 @@ reflexive right/.style={->,loop,looseness=7,in=30,out=330}
 
 %------------------------------------------------
 
-\begin{frame}{Memory Location Virtualization: Mechanism}
-\begin{figure}
-    \centering
-
-\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
-
-\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-%uncomment if require: \path (0,250); %set diagram left start at 0, and has height of 250
-
-%Shape: Ellipse [id:dp7871360559446556] 
-\draw   (71,137.5) .. controls (71,95.8) and (98.76,62) .. (133,62) .. controls (167.24,62) and (195,95.8) .. (195,137.5) .. controls (195,179.2) and (167.24,213) .. (133,213) .. controls (98.76,213) and (71,179.2) .. (71,137.5) -- cycle ;
-%Shape: Ellipse [id:dp9295032901075098] 
-\draw   (310.5,115.5) .. controls (310.5,61.65) and (342.4,18) .. (381.75,18) .. controls (421.1,18) and (453,61.65) .. (453,115.5) .. controls (453,169.35) and (421.1,213) .. (381.75,213) .. controls (342.4,213) and (310.5,169.35) .. (310.5,115.5) -- cycle ;
-%Rounded Rect [id:dp2598148010919421] 
-\draw   (38,52.8) .. controls (38,28.06) and (58.06,8) .. (82.8,8) -- (435.7,8) .. controls (460.44,8) and (480.5,28.06) .. (480.5,52.8) -- (480.5,187.2) .. controls (480.5,211.94) and (460.44,232) .. (435.7,232) -- (82.8,232) .. controls (58.06,232) and (38,211.94) .. (38,187.2) -- cycle ;
-%Right Arrow [id:dp17531291394449267] 
-\draw   (203.5,115.25) -- (262.9,115.25) -- (262.9,90) -- (302.5,140.5) -- (262.9,191) -- (262.9,165.75) -- (203.5,165.75) -- cycle ;
-%Curve Right Arrow [id:dp08259202048956893] 
-\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (464.91,159.13) .. controls (466.98,142.19) and (444.94,130.45) .. (415.68,132.92) -- (417.66,116.75) .. controls (446.92,114.27) and (468.96,126.01) .. (466.89,142.96) ;\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (466.89,142.96) .. controls (465.35,155.54) and (450.94,167.46) .. (431.65,173.78) -- (432.59,166.08) -- (409.15,186.21) -- (428.73,197.65) -- (429.67,189.95) .. controls (448.96,183.64) and (463.37,171.72) .. (464.91,159.13)(466.89,142.96) -- (464.91,159.13) ;
-
-% Text Node
-\draw (58,65) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize V};
-% Text Node
-\draw (319,24) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize P};
-% Text Node
-\draw (111,87) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize va$_i$};
-% Text Node
-\draw (111,113) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize va$_{i+1}$};
-% Text Node
-\draw (111,166) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize va$_n$};
-% Text Node
-\draw (358,38) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize pa$_i$};
-% Text Node
-\draw (358,64) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize pa$_{i+1}$};
-% Text Node
-\draw (361,172) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize va$_m$};
-% Text Node
-\draw (62,20) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize $\gamma $};
-% Text Node
-\draw (204.5,119) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize Address\\ \scriptsize Translation};
-% Text Node
-\draw    (319,92) -- (448,92) -- (448,159) -- (319,159) -- cycle  ;
-\draw (320,93) node [anchor=north west][inner sep=0.75pt]   [align=left] {\scriptsize Physical Memory\\ \scriptsize For Address \\ \scriptsize Translation Tables};
-
-
-\end{tikzpicture}
-    \caption{Address-Translation: A Mechanism for Realizing Address Virtualization}
-    \label{fig:enter-label}
-\end{figure}
-
-\end{frame}
-
 %------------------------------------------------
 
 \begin{frame}{Page Tables}
@@ -646,95 +594,13 @@ reflexive right/.style={->,loop,looseness=7,in=30,out=330}
 
 %Sharing Physical Page Tables 
 %1.------------------------------------------------
-\begin{frame}{Sharing Physical Page Tables}
-    \begin{figure}
-        \centering
-        
-
-
-\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
-
-\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.5,xscale=0.5]
-%uncomment if require: \path (0,438); %set diagram left start at 0, and has height of 438
-
-%Shape: Rectangle [id:dp7317880523817719] 
-\draw   (118,55) -- (188,55) -- (188,95) -- (118,95) -- cycle ;
-%Shape: Rectangle [id:dp5225486463875249] 
-\draw   (188,55) -- (258,55) -- (258,95) -- (188,95) -- cycle ;
-%Shape: Rectangle [id:dp286436732742432] 
-\draw   (258,55) -- (328,55) -- (328,95) -- (258,95) -- cycle ;
-%Shape: Rectangle [id:dp23476266141975666] 
-\draw   (328,55) -- (398,55) -- (398,95) -- (328,95) -- cycle ;
-%Shape: Rectangle [id:dp20898213992300274] 
-\draw   (398,55) -- (468,55) -- (468,95) -- (398,95) -- cycle ;
-%Shape: Rectangle [id:dp347367086236243] 
-\draw   (468,55) -- (538,55) -- (538,95) -- (468,95) -- cycle ;
-%Shape: Rectangle [id:dp44942702288840586] 
-\draw   (81,339) -- (122.5,339) -- (122.5,379) -- (81,379) -- cycle ;
-%Shape: Rectangle [id:dp47453526528917545] 
-\draw   (122.5,339) -- (251.5,339) -- (251.5,379) -- (122.5,379) -- cycle ;
-%Shape: Rectangle [id:dp7167826579126793] 
-\draw   (251.5,339) -- (291,339) -- (291,379) -- (251.5,379) -- cycle ;
-%Shape: Rectangle [id:dp2025452842323363] 
-\draw   (521,339) -- (591,339) -- (591,379) -- (521,379) -- cycle ;
-
-% Text Node
-\draw (14,15) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Virtual}};
-% Text Node
-\draw (589,410) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Physical}};
-% Text Node
-\draw (142,387) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 51}};
-% Text Node
-\draw (212,387) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 12}};
-% Text Node
-\draw (107,29) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 63}};
-% Text Node
-\draw (178,29) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 48}};
-% Text Node
-\draw (248,29) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 39}};
-% Text Node
-\draw (317,29) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 30}};
-% Text Node
-\draw (388,29) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 21}};
-% Text Node
-\draw (457,29) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 12}};
-% Text Node
-\draw (526,29) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 0}};
-% Text Node
-\draw (135,66) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Sign}};
-% Text Node
-\draw (198,66) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L4 I}};
-% Text Node
-\draw (267,65) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L3 I}};
-% Text Node
-\draw (338,65) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L2 I}};
-% Text Node
-\draw (408,66) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L1 I}};
-% Text Node
-\draw (484,66) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Pg}};
-% Text Node
-\draw (61,64) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize va$_i$}};
-% Text Node
-\draw (25,350) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize root}};
-% Text Node
-\draw (459,350) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize page}};
-% Text Node
-\draw (539,349) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 4K}};
-% Text Node
-\draw (131,351) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Base Addr}};
-
-
-\end{tikzpicture}
-        \caption{Physical and Virtual Resources}
-        \label{fig:enter-label}
-    \end{figure}
-\end{frame}
 %Sharing Physical Page Tables
 %2--------------------------------------------------
 
 %13--------------------------------------------------------
 %14----------------------------------------------------------
-\begin{frame}[fragile]{Sharing Physical xZxsxasdasdPage Tables}
+\begin{frame}[fragile]{Sharing Physical Page Tables}
+
 \begin{columns}[c]
 \column{.59\textwidth}    
     \begin{figure}
@@ -906,148 +772,6 @@ pte_t *walkpgdir(pte_t *l4, void *va){
 
 %Soundness of Page Table Traversal
 %--------------------------------------------
-\begin{frame}{Breaking Soundness in Sharing}
-    \begin{figure}
-        \centering
-\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
-
-\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.5,xscale=0.5]
-%uncomment if require: \path (0,476); %set diagram left start at 0, and has height of 476
-
-%Shape: Rectangle [id:dp9406932326447903] 
-\draw   (33,166) -- (123,166) -- (123,317) -- (33,317) -- cycle ;
-%Shape: Rectangle [id:dp7682116051394419] 
-\draw   (166,166) -- (256,166) -- (256,317) -- (166,317) -- cycle ;
-%Shape: Rectangle [id:dp07376733516930423] 
-\draw   (295,166) -- (385,166) -- (385,317) -- (295,317) -- cycle ;
-%Shape: Rectangle [id:dp7106629147891306] 
-\draw   (427,166) -- (517,166) -- (517,317) -- (427,317) -- cycle ;
-%Shape: Rectangle [id:dp1342906826203598] 
-\draw   (115,79) -- (185,79) -- (185,119) -- (115,119) -- cycle ;
-%Shape: Rectangle [id:dp08072439007207399] 
-\draw   (185,79) -- (255,79) -- (255,119) -- (185,119) -- cycle ;
-%Shape: Rectangle [id:dp8282933603833216] 
-\draw   (255,79) -- (325,79) -- (325,119) -- (255,119) -- cycle ;
-%Shape: Rectangle [id:dp8416255090865326] 
-\draw   (325,79) -- (395,79) -- (395,119) -- (325,119) -- cycle ;
-%Shape: Rectangle [id:dp22911958218529804] 
-\draw   (395,79) -- (465,79) -- (465,119) -- (395,119) -- cycle ;
-%Shape: Rectangle [id:dp33732955213990756] 
-\draw   (465,79) -- (535,79) -- (535,119) -- (465,119) -- cycle ;
-%Curve Lines [id:da6688730321284677] 
-\draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (210,122) .. controls (-37.94,124.94) and (15.69,215.28) .. (30.17,238.65) ;
-\draw [shift={(31,240)}, rotate = 238.24] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Shape: Rectangle [id:dp6044747978986409] 
-\draw   (33,216) -- (123,216) -- (123,256) -- (33,256) -- cycle ;
-%Curve Lines [id:da8867562998134584] 
-\draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (290,122) .. controls (116.54,137.68) and (140.92,193.7) .. (160.79,219.46) ;
-\draw [shift={(162,221)}, rotate = 231.34] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Shape: Rectangle [id:dp8861153167245819] 
-\draw   (166,202) -- (256,202) -- (256,242) -- (166,242) -- cycle ;
-%Shape: Rectangle [id:dp05979844200848894] 
-\draw   (295,181) -- (385,181) -- (385,221) -- (295,221) -- cycle ;
-%Shape: Rectangle [id:dp17403733244247843] 
-\draw   (427,237) -- (517,237) -- (517,277) -- (427,277) -- cycle ;
-%Curve Lines [id:da20581124900573955] 
-\draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (357,122) .. controls (262.92,135.72) and (272.56,173.45) .. (291.81,198.48) ;
-\draw [shift={(293,200)}, rotate = 231.34] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Curve Lines [id:da07589611603635316] 
-\draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (433,122) .. controls (384.98,136.7) and (401.31,222.47) .. (420.8,249.42) ;
-\draw [shift={(422,251)}, rotate = 231.34] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Curve Lines [id:da017521077423665377] 
-\draw    (42,374) .. controls (-10.21,384.84) and (17.15,348.13) .. (32.32,318.36) ;
-\draw [shift={(33,317)}, rotate = 116.57] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Curve Lines [id:da6750042432035159] 
-\draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (122,240) .. controls (128.9,279.4) and (131.91,294.54) .. (159.71,314.1) ;
-\draw [shift={(161,315)}, rotate = 214.59] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Curve Lines [id:da14788158682113428] 
-\draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (257,222) .. controls (258.95,261) and (277.06,295.25) .. (293.72,315.47) ;
-\draw [shift={(295,317)}, rotate = 229.64] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Curve Lines [id:da3297977595767969] 
-\draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (386,202) .. controls (392.86,251) and (408.36,295.2) .. (425.92,315.77) ;
-\draw [shift={(427,317)}, rotate = 228.01] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Shape: Rectangle [id:dp49428805993358815] 
-\draw   (519,363) -- (589,363) -- (589,403) -- (519,403) -- cycle ;
-%Shape: Rectangle [id:dp886191131490832] 
-\draw   (86,365) -- (127.5,365) -- (127.5,405) -- (86,405) -- cycle ;
-%Shape: Rectangle [id:dp7623210397795441] 
-\draw   (127.5,365) -- (256.5,365) -- (256.5,405) -- (127.5,405) -- cycle ;
-%Shape: Rectangle [id:dp41272095233228523] 
-\draw   (256.5,365) -- (296,365) -- (296,405) -- (256.5,405) -- cycle ;
-%Curve Lines [id:da25384974890834555] 
-\draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (497,121) .. controls (572.46,143.54) and (569.17,274.61) .. (568.06,308.07) ;
-\draw [shift={(568,310)}, rotate = 271.91] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Curve Lines [id:da34682458787441517] 
-\draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (516,254) .. controls (523.76,278.25) and (542.81,301.56) .. (555.81,315.71) ;
-\draw [shift={(557,317)}, rotate = 227.12] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Shape: Rectangle [id:dp9106415441109659] 
-\draw   (518,363) -- (588,363) -- (588,403) -- (518,403) -- cycle ;
-\draw   (559,325.5) .. controls (559,320.25) and (563.25,316) .. (568.5,316) .. controls (573.75,316) and (578,320.25) .. (578,325.5) .. controls (578,330.75) and (573.75,335) .. (568.5,335) .. controls (563.25,335) and (559,330.75) .. (559,325.5) -- cycle ; \draw   (559,325.5) -- (578,325.5) ; \draw   (568.5,316) -- (568.5,335) ;
-%Curve Lines [id:da5209214352310081] 
-\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=6]    (561.5,334) .. controls (511.52,329.1) and (420.72,332.84) .. (536.17,358.41) ;
-\draw [shift={(543.5,360)}, rotate = 192.05] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=6]    (40.44,-12.17) .. controls (25.71,-5.16) and (12.23,-1.11) .. (0,0) .. controls (12.23,1.11) and (25.71,5.17) .. (40.44,12.17)   ;
-
-% Text Node
-\draw (9,11) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Virtual}};
-% Text Node
-\draw (549,440) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Physical}};
-% Text Node
-\draw (102,50) node [anchor=north west][inner sep=0.75pt]   [align=left] {63};
-% Text Node
-\draw (173,50) node [anchor=north west][inner sep=0.75pt]   [align=left] {48};
-% Text Node
-\draw (243,50) node [anchor=north west][inner sep=0.75pt]   [align=left] {39};
-% Text Node
-\draw (312,50) node [anchor=north west][inner sep=0.75pt]   [align=left] {30};
-% Text Node
-\draw (383,50) node [anchor=north west][inner sep=0.75pt]   [align=left] {21};
-% Text Node
-\draw (452,50) node [anchor=north west][inner sep=0.75pt]   [align=left] {12};
-% Text Node
-\draw (521,50) node [anchor=north west][inner sep=0.75pt]   [align=left] {0};
-% Text Node
-\draw (130,87) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Sign}};
-% Text Node
-\draw (193,87) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L4 I}};
-% Text Node
-\draw (262,87) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L3 I}};
-% Text Node
-\draw (333,87) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L2 I}};
-% Text Node
-\draw (403,87) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L1 I}};
-% Text Node
-\draw (479,87) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Pg}};
-% Text Node
-\draw (52,89) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize va$_i$}};
-% Text Node
-\draw (31,371) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize root}};
-% Text Node
-\draw (47,225) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L4 E}};
-% Text Node
-\draw (181,211) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L3 E}};
-% Text Node
-\draw (311,189) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L2 E}};
-% Text Node
-\draw (443,245) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize L1 E}};
-% Text Node
-\draw (468,373) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize page}};
-% Text Node
-\draw (535,370) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 4K}};
-% Text Node
-\draw (145,410) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 51}};
-% Text Node
-\draw (215,410) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 12}};
-% Text Node
-\draw (134,374) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Base Addr}};
-% Text Node
-\draw (534,370) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize 4K}};
-
-
-\end{tikzpicture}
-       \caption{Sharing Page-Tables under Updates to Page-Tables}
-        \label{fig:enter-label}
-    \end{figure}
-\end{frame}
 \begin{frame}{Breaking Soundness in Sharing}
 \begin{columns}[c]
     \column{0.65\textwidth}
@@ -1650,9 +1374,7 @@ pte_t *walkpgdir(pte_t *l4, void *va){
         \item Why don't we define \emph{virtual} memory references in terms of the physical page-table and the final page references? 
     \end{itemize}
       \[ \textsf{L}_{4}\_\textsf{L}_{1}\_\textsf{PointsTo}(\vaddr\textsf{, l4e, l3e, l2e, l1e, paddr}) + paddr \mapsto_{p} \mathsf{page\_val}\]
-%
-%          \text{\Large                    No!}
-%
+% 
 \end{frame}
 \begin{frame}{Tokens for Traversals} \scriptsize
     \begin{columns}
@@ -1665,7 +1387,6 @@ pte_t *walkpgdir(pte_t *l4, void *va){
         \end{itemize}
     \end{columns}
 \end{frame}
-
 
 \begin{frame}{Some Parts from Kernel Invariant}\scriptsize
     \begin{definition}[The Kernel Invariant for Page-Table Traversal with Virtual Page-Table Pointers]
@@ -1782,18 +1503,19 @@ pte\_initialize&4&20&~700\\
 \end{table}%
 \begin{table}[ht]
 \centering
+\vspace{-5mm}
 \caption{Line-of-Code Numbers for x64-Iris Logic}
 \label{fig:tablex64iris}
 \begin{tabular}[t]{lc}
 \hline
 & Roqc LoC  \\
 \hline
-Soundness of Instructions Mentioned in the Presentation  &\begin{array}{l}  &  \quad \quad \quad\quad \quad\quad \quad\quad \quad 50176  \\ &(\textsf{The Complete Set of Instructions } \ge 1 \textsf{ Million})\end{array}\\
+Soundness of Instructions Mentioned in the Presentation  &\begin{array}{l}  &  \quad \quad \quad\quad \quad\quad \quad\quad \quad 50176  \\ &(\textsf{The Complete Set of Instructions } $\ge$ 1 \textsf{ Million})\end{array}\\
 VMM Related Logical Constructions &5554\\
 Machine Model & 6172\\
 \hline
 \end{tabular}
-\end{table}%
+\end{table}
 \end{frame}
 \section{The Current and Future Directions \& Conclusions}
 \subsection{Modal Abstractions for Verification Patterns}
@@ -1809,7 +1531,9 @@ Machine Model & 6172\\
 
 %--------------
 \makepart{Modal Understanding of Specification Evolution}
-\section{Definitions}
+\begin{frame}{Protocols}
+    \
+\end{frame}
 \begin{frame}{Specifying Protocols for Systems with \textbf{STS}es}\scriptsize
 \begin{columns}[c]
 \column{0.45\textwidth}
@@ -1985,124 +1709,6 @@ The bisimulation ($\mathcal{M}(\pi,\pi',\varphi,\varphi',s,\mathsf{T},\mathsf{U}
 \end{frame}
 \subsection{Understanding Bisimulations}
 
-\begin{frame}{Embeddings for Tokens and States}\scriptsize
-\begin{columns}[c]
-\column{0.4\textwidth}
-\begin{figure}
-    \centering
-\begin{tikzpicture}[modal]
-    \node[point] (to-flush) [label=135:{$\begin{array}{l}\mathbf{opened} \\ \mathcal{T}_@\end{array}$}] {};
-    \node[point] (opened) [right=of to-flush, label=60:{$\begin{array}{l}\mathbf{to-flush}\\\mathcal{T}_@ 
-    \end{array}$}] {};
-    \node[point](closed) [below=of to-flush, label=180:{$\begin{array}{l}\mathbf{closed}\\\mathcal{T}_@  
-    \end{array}$}] {};
-    \path[->] (to-flush) edge[bend left] node[above]{$T_1$} (opened);
-    \path[->] (opened) edge[reflexive right,out=-45,in=0,looseness=18] node[right] {$T_2$} (opened);
-    \path[->] (to-flush) edge[reflexive left,out=180,in=225,looseness=18] node[left] {$T_3$} (to-flush);
-     \path[->] (to-flush) edge node[left] {$T_4$} (closed);
-\end{tikzpicture}
- %   \caption{Caption}
-    \label{fig:enter-label}
-\end{figure}
-\column{.2\textwidth}
-\begin{figure}
-    \centering
-\begin{tikzpicture}[modal]
-    \node[point] (opened) [label=above:{$\begin{array}{l}\mathbf{opened}\\ \mathcal{T}_@\end{array}$}] {};
-     \node[point](closed) [below=of opened, label=180:{$\begin{array}{l}\mathbf{closed}\\\mathcal{T}_@ 
-    \end{array}$}] {};
-    \path[->] (opened) edge[reflexive right,out=-45,in=45,looseness=18] node[below] {$T_5$} (opened);
-      \path[->] (opened) edge node[left] {$T_6$} (closed);
-    
-\end{tikzpicture}
-  %  \caption{Caption}
-    \label{fig:enter-label}
-    \end{figure}
-\column{0.39\textwidth}
-\begin{itemize}
-    \item How to impose \emph{indistinguishability} of behavior observed on \emph{bisimilar} states
-    \item How to impose \emph{indistinguishability} over the steps taken between \emph{bisimilar} states
-\end{itemize}
-\end{columns}
-\end{frame}
-\begin{frame}{Embeddings for Tokens }\scriptsize
-\begin{columns}[c]
-\column{0.4\textwidth}
-\begin{figure}
-    \centering
-\begin{tikzpicture}[modal]
-    \node[point] (to-flush) [label=135:{$\begin{array}{l}\mathbf{opened} \\ \mathcal{T}_@\end{array}$}] {};
-    \node[point] (opened) [right=of to-flush, label=60:{$\begin{array}{l}\mathbf{to-flush}\\\mathcal{T}_@ 
-    \end{array}$}] {};
-    \node[point](closed) [below=of to-flush, label=180:{$\begin{array}{l}\mathbf{closed}\\\mathcal{T}_@  
-    \end{array}$}] {};
-    \path[->] (to-flush) edge[bend left] node[above]{$T_1$} (opened);
-    \path[->] (opened) edge[reflexive right,out=-45,in=0,looseness=18] node[right] {$T_2$} (opened);
-    \path[->] (to-flush) edge[reflexive left,out=180,in=225,looseness=18] node[left] {$T_3$} (to-flush);
-     \path[->] (to-flush) edge node[left] {$T_4$} (closed);
-\end{tikzpicture}
- %   \caption{Caption}
-    \label{fig:enter-label}
-\end{figure}
-\column{.2\textwidth}
-\begin{figure}
-    \centering
-\begin{tikzpicture}[modal]
-    \node[point] (opened) [label=above:{$\begin{array}{l}\mathbf{opened}\\ \mathcal{T}_@\end{array}$}] {};
-     \node[point](closed) [below=of opened, label=180:{$\begin{array}{l}\mathbf{closed}\\\mathcal{T}_@ 
-    \end{array}$}] {};
-    \path[->] (opened) edge[reflexive right,out=-45,in=45,looseness=18] node[below] {$T_5$} (opened);
-      \path[->] (opened) edge node[left] {$T_6$} (closed);
-    
-\end{tikzpicture}
-  %  \caption{Caption}
-    \label{fig:enter-label}
-    \end{figure}
-\column{0.39\textwidth}
-\begin{itemize}
-    \item Make \emph{token exchange} align with \emph{indistinguishability}: Embedding tokens (lifted $\epsilon_{\overline{\mathcal{T}}}$) $T_1$, $T_3$, and $T_2$ to $T_5$, and $T_4$ to $T_6$
-\end{itemize}
-\end{columns}
-\end{frame}
-\begin{frame}{Embeddings for State}\scriptsize
-\begin{columns}[c]
-\column{0.4\textwidth}
-\begin{figure}
-    \centering
-\begin{tikzpicture}[modal]
-    \node[point] (to-flush) [label=135:{$\begin{array}{l}\mathbf{opened} \\ \mathcal{T}=\{wa\}\end{array}$}] {};
-    \node[point] (opened) [right=of to-flush, label=60:{$\begin{array}{l}\mathbf{to-flush}\\\mathcal{T} = \{wa\} 
-    \end{array}$}] {};
-    \node[point](closed) [below=of to-flush, label=180:{$\begin{array}{l}\mathbf{closed}\\\mathcal{T} = \{wa\} 
-    \end{array}$}] {};
-    \path[->] (to-flush) edge[bend left] node[above]{$\emptyset$} (opened);
-    \path[->] (opened) edge[reflexive right,out=-45,in=0,looseness=18] node[right] {$\emptyset$} (opened);
-    \path[->] (to-flush) edge[reflexive left,out=180,in=225,looseness=18] node[left] {$\emptyset$} (to-flush);
-     \path[->] (to-flush) edge node[left] {$\emptyset$} (closed);
-\end{tikzpicture}
-  %  \caption{Caption}
-    \label{fig:enter-label}
-\end{figure}
-\column{.2\textwidth}
-\begin{figure}
-    \centering
-\begin{tikzpicture}[modal]
-    \node[point] (opened) [label=above:{$\begin{array}{l}\mathbf{opened}\\ \mathcal{T}=\{wa\}\end{array}$}] {};
-     \node[point](closed) [below=of opened, label=180:{$\begin{array}{l}\mathbf{closed}\\\mathcal{T} = \{wa\} 
-    \end{array}$}] {};
-    \path[->] (opened) edge[reflexive right,out=-45,in=45,looseness=18] node[below] {$\emptyset$} (opened);
-      \path[->] (opened) edge node[left] {$\emptyset$} (closed);
-\end{tikzpicture}
-%    \caption{Caption}
-    \label{fig:enter-label}
-    \end{figure}
-    \column{0.39\textwidth}
-    \begin{itemize}
-        \item Setting client interference aside, we would consider \textsf{opened} and \textsf{flushed} of the left state machine to be \emph{bisimilar} to \textsf{opened} of the right state machine
-    \end{itemize}
-\end{columns}
-\end{frame}
-
 \begin{frame}{We Need This} \scriptsize
 \[
 \inferrule[Bisim]{
@@ -2140,227 +1746,6 @@ The bisimulation ($\mathcal{M}(\pi,\pi',\varphi,\varphi',s,\mathsf{T},\mathsf{U}
 }
 \]
 \end{frame}
-\begin{frame}{The Law of Rely}\scriptsize
- \begin{theorem}[The Law of Rely]\scriptsize
-            \[
-            \begin{array}{l}\forall s' .   (s;T) \overset{\mathsf{rely}^{*}}{\sqsubseteq}_{\pi}  (s';T) \leftrightarrow \\
-           \quad\quad  (\forall_{s_1,s_1',T_1} \ldotp \epsilon_{\mathcal{S}}(s ,s_1) \rightarrow \epsilon_{\mathcal{S}}(s',s'_1) \rightarrow \epsilon_{\overline{\mathcal{T}}}(T,T_1) \rightarrow ( s_1; T_1) \overset{\mathsf{rely}^{*}}{\sqsubseteq}_{\pi'} (s'_1; T_1)
-            \end{array}
-           \]
-     \end{theorem}
-     \begin{itemize}
-         \item We do not drop any client interference with capabilities $T$
-         \item Indetification of the states that are tolerant to the client interference from which the STS can take steps (Guarantee)
-         \item Bookkeeping of the client interference needed!  
-         \item Identifying the valid \emph{pre} state
-     \end{itemize}
-\end{frame}
-
-\begin{frame}{The Law of Rely for a Bisimulation Instance} \scriptsize
-    \begin{columns}
-        \column{0.5\textwidth}
-\begin{figure}
-\begin{tikzpicture}[modal]
-    \node[point] (to-flush) [label=90:{$\begin{array}{l}\mathbf{opened} \\ \mathcal{T}=\{wa\}\end{array}$}] {};
-    \node[point] (opened) [right=of to-flush, label=270:{$\begin{array}{l}\mathbf{to-flush}\\\mathcal{T} = \{wa\} 
-    \end{array}$}] {};
-    \node[point](closed) [below=of to-flush, label=270:{$\begin{array}{l}\mathbf{closed}\\\mathcal{T} = \{wa\} 
-    \end{array}$}] {};
-    \path[->] (to-flush) edge[bend left] node[above]{$\emptyset$} (opened);
-    \path[->] (opened) edge[reflexive right,out=-45,in=0,looseness=18] node[right] {$\emptyset$} (opened);
-    \path[->] (to-flush) edge[reflexive left,out=180,in=225,looseness=18] node[left] {$\emptyset$} (to-flush);
-     \path[->] (to-flush) edge node[left] {$\emptyset$} (closed);
-\end{tikzpicture}
-  %  \caption{Caption}
-    \label{fig:enter-label}
-\end{figure}
-\column{.39\textwidth}
-\begin{figure}
-\begin{tikzpicture}[modal]
-    \node[point] (opened) [label=above:{$\begin{array}{l}\mathbf{opened}\\ \mathcal{T}=\{wa\}\end{array}$}] {};
-     \node[point](closed) [below=of opened, label=270:{$\begin{array}{l}\mathbf{closed}\\\mathcal{T} = \{wa\} 
-    \end{array}$}] {};
-    \path[->] (opened) edge[reflexive right,out=-45,in=45,looseness=18] node[below] {$\emptyset$} (opened);
-      \path[->] (opened) edge node[left] {$\emptyset$} (closed);
-\end{tikzpicture}
-%    \caption{Caption}
-    \label{fig:enter-label}
-    \end{figure}
-    \end{columns}
-\end{frame}
-\begin{frame}{We Need This}\scriptsize
-\[
-\inferrule[UpdIsl]{
-        \alpha~\textrm{physically atomic}\\
-        \forall s_0 \;\ldotp  \;((s;\mathsf{T})\;\overset{\mathsf{rely}^{*}}{\sqsubseteq}_\pi\;( s_0;\mathsf{T}))\; \vdash
-        \triple{ \varphi(s_0)\ast P }{\alpha}{ \exists s' \;, \;\mathsf{T}'\;\ldotp \; (s_0;\mathsf{T})\; \overset{\mathsf{guar}^{*}}{\sqsubseteq}_\pi \;(s';\mathsf{T}') \ast 
-        \varphi(s')\ast Q}
-    }{
-      \fbox{$\varphi$}^{\gamma}_{\pi} \vdash
-      \triple{ \ownGhost{\gamma}{s;\mathsf{T}}_{\pi} \ast P }
-            {\alpha}
-        { \exists \; s', \mathsf{T}' \ldotp \ownGhost{\gamma}{s';\mathsf{T}'}_{\pi} \ast Q }
-    }
-\]
-\[
-\inferrule[Bisim]{
-	\pi\sim\pi'\quad\quad 
-	q\; \epsilon_{\mathcal{S}} \;s \quad\quad q' \; \epsilon_{\mathcal{S}} \;s' \\
-	\triple{\ownGhost{\gamma}{s;\epsilon_{\overline{\mathcal{T}}}(\mathcal{T})}_{\pi'} \ast P}{C}{\ownGhost{\gamma}{s';\mathsf{T}'}_{\pi'} \ast Q}
-}{
-	\fbox{$\varphi$}^{\gamma}_{\pi} \vdash
-    \triple{\ownGhost{\gamma}{q;\mathsf{T}}_{\pi}\ast P}{C}{\ownGhost{\gamma}{q';\mathsf{T}'}_{\pi} \ast Q}
-}
-\]
-\end{frame}
-\begin{frame}{How? Obligation - 1}\scriptsize
-\[
-\inferrule[UpdIsl]{
-        \alpha~\textrm{physically atomic}\\
-        \forall s_0 \;\ldotp  \;\tcbhighmath[boxrule=2pt,arc=1pt,colback=blue!10!white,colframe=blue,
-  drop fuzzy shadow=red]{((s;\mathsf{T})\;\overset{\mathsf{rely}^{*}}{\sqsubseteq}_\pi\;( s_0;\mathsf{T}))}\; \vdash
-        \triple{ \varphi(s_0)\ast P }{\alpha}{ \exists s' \;, \;\mathsf{T}'\;\ldotp \; (s_0;\mathsf{T})\; \overset{\mathsf{guar}^{*}}{\sqsubseteq}_\pi \;(s';\mathsf{T}') \ast 
-        \varphi(s')\ast Q}
-    }{
-      \fbox{$\varphi$}^{\gamma}_{\pi} \vdash
-      \triple{ \ownGhost{\gamma}{s;\mathsf{T}}_{\pi} \ast P }
-            {\alpha}
-        { \exists \; s', \mathsf{T}' \ldotp \ownGhost{\gamma}{s';\mathsf{T}'}_{\pi} \ast Q }
-    }
-\]
-\[
-\inferrule[Bisim]{
-	\pi\sim\pi'\quad\quad 
-	q\; \epsilon_{\mathcal{S}} \;s \quad\quad q' \; \epsilon_{\mathcal{S}} \;s' \\
-	\triple{\ownGhost{\gamma}{s;\epsilon_{\overline{\mathcal{T}}}(\mathcal{T})}_{\pi'} \ast P}{C}{\ownGhost{\gamma}{s';\mathsf{T}'}_{\pi'} \ast Q}
-}{
-	\fbox{$\varphi$}^{\gamma}_{\pi} \vdash
-    \triple{\ownGhost{\gamma}{q;\mathsf{T}}_{\pi}\ast P}{C}{\ownGhost{\gamma}{q';\mathsf{T}'}_{\pi} \ast Q}
-}
-\]
-\end{frame}
-\begin{frame}{The Law of Rely}\scriptsize
- \begin{theorem}[The Law of Rely]\scriptsize
-            \[
-            \begin{array}{l}\forall s' .   (s;T) \overset{\mathsf{rely}^{*}}{\sqsubseteq}_{\pi}  (s';T) \leftrightarrow \\
-           \quad\quad  (\forall_{s_1,s_1',T_1} \ldotp \epsilon_{\mathcal{S}}(s ,s_1) \rightarrow \epsilon_{\mathcal{S}}(s',s'_1) \rightarrow \epsilon_{\overline{\mathcal{T}}}(T,T_1) \rightarrow ( s_1; T_1) \overset{\mathsf{rely}^{*}}{\sqsubseteq}_{\pi'} (s'_1; T_1)
-            \end{array}
-           \]
-     \end{theorem}
-     \begin{itemize}
-         \item We do not drop any client interference with capabilities $T$
-         \item Indetification of the states that are tolerant to the client interference from which the STS can take steps (Guarantee)
-         \item Bookkeeping of the client interference needed!  
-         \item Identifying the valid \emph{pre} state
-     \end{itemize}
-\end{frame}
-\begin{frame}{How? Obligation - 2}\scriptsize
-\[
-\inferrule[UpdIsl]{
-        \alpha~\textrm{physically atomic}\\
-        \forall s_0 \;\ldotp  \;((s;\mathsf{T})\;\overset{\mathsf{rely}^{*}}{\sqsubseteq}_\pi\;( s_0;\mathsf{T}))\; \vdash
-        \triple{ \varphi(s_0)\ast P }{\alpha}{ \exists s' \;, \;\mathsf{T}'\;\ldotp \; \tcbhighmath[boxrule=2pt,arc=1pt,colback=blue!10!white,colframe=blue,
-  drop fuzzy shadow=red]{(s_0;\mathsf{T})\; \overset{\mathsf{guar}^{*}}{\sqsubseteq}_\pi \;(s';\mathsf{T}') } \ast 
-        \varphi(s')\ast Q}
-    }{
-      \fbox{$\varphi$}^{\gamma}_{\pi} \vdash
-      \triple{ \ownGhost{\gamma}{s;\mathsf{T}}_{\pi} \ast P }
-            {\alpha}
-        { \exists \; s', \mathsf{T}' \ldotp \ownGhost{\gamma}{s';\mathsf{T}'}_{\pi} \ast Q }
-    }
-\]
-\[
-\inferrule[Bisim]{
-	\pi\sim\pi'\quad\quad 
-	q\; \epsilon_{\mathcal{S}} \;s \quad\quad q' \; \epsilon_{\mathcal{S}} \;s' \\
-	\triple{\ownGhost{\gamma}{s;\epsilon_{\overline{\mathcal{T}}}(\mathcal{T})}_{\pi'} \ast P}{C}{\ownGhost{\gamma}{s';\mathsf{T}'}_{\pi'} \ast Q}
-}{
-	\fbox{$\varphi$}^{\gamma}_{\pi} \vdash
-    \triple{\ownGhost{\gamma}{q;\mathsf{T}}_{\pi}\ast P}{C}{\ownGhost{\gamma}{q';\mathsf{T}'}_{\pi} \ast Q}
-}
-\]
-\end{frame}
-\begin{frame}{The Law of Guarantee}\scriptsize
-    \begin{theorem}[Guarantee Bisim without Invariants] 
-\[
-\begin{array}{l}
-\forall_{q',q, T'} \ldotp 
-    \epsilon_{\overline{\mathcal{T}}} ( T) \equiv T' \rightarrow \epsilon_{\mathcal{S}}(s,q)
-\rightarrow   (q;T')\overset{\mathsf{rely}^{*}}{\sqsubseteq}_{\pi'}(q';T') \rightarrow  \\
-\quad\quad\quad\quad \forall_{q'',T''}\ldotp (q';T')\overset{\mathsf{guar.}}{\sqsubseteq}_{\pi'}(q'';T'') \rightarrow  \\
-\quad\quad\quad\quad\quad\quad \exists_{s',s'',T'_0,T''_0} \ldotp (s';T'_0) \overset{\mathsf{guar.}}{\sqsubseteq}_{\pi} (s'';T''_0) \land \\ \quad\quad\quad\quad\quad\quad\quad\quad \epsilon_{\mathcal{S}}(s')=q' \land \epsilon_{\mathcal{S}}(s'') = q'' \land \epsilon_{\overline{\mathcal{T}}}(T'_0) \equiv T' \land \epsilon_{\overline{\mathcal{T}}}(T''_0) \equiv T''
- \end{array}
-\]
-\end{theorem}
-\begin{itemize}
-    \item \emph{Under the embedded client interference}, the steps taken by the target STS must be countered by a one in the source STS
-    \item From target STS to source STS
-    \item Identifying the valid \emph{post} state 
-\end{itemize}
-\end{frame}
-
-\subsection{Invariants}
-\begin{frame}{We Need This} \scriptsize
-\[
-\inferrule[UpdIsl]{
-        \alpha~\textrm{physically atomic}\\
-        \forall s_0 \;\ldotp  \;((s;\mathsf{T})\;\overset{\mathsf{rely}^{*}}{\sqsubseteq}_\pi\;( s_0;\mathsf{T}))\; \vdash
-        \triple{ \varphi(s_0)\ast P }{\alpha}{ \exists s' \;, \;\mathsf{T}'\;\ldotp \; (s_0;\mathsf{T})\; \overset{\mathsf{guar}^{*}}{\sqsubseteq}_\pi \;(s';\mathsf{T}') \ast 
-        \varphi(s')\ast Q}
-    }{
-      \fbox{$\varphi$}^{\gamma}_{\pi} \vdash
-      \triple{ \ownGhost{\gamma}{s;\mathsf{T}}_{\pi} \ast P }
-            {\alpha}
-        { \exists \; s', \mathsf{T}' \ldotp \ownGhost{\gamma}{s';\mathsf{T}'}_{\pi} \ast Q }
-    }
-\]
-\[
-\inferrule[Bisim]{
-	\pi\sim\pi'\quad\quad 
-	q\; \epsilon_{\mathcal{S}} \;s \quad\quad q' \; \epsilon_{\mathcal{S}} \;s' \\
-	\triple{\ownGhost{\gamma}{s;\epsilon_{\overline{\mathcal{T}}}(\mathcal{T})}_{\pi'} \ast P}{C}{\ownGhost{\gamma}{s';\mathsf{T}'}_{\pi'}\ast Q}
-}{
-	\fbox{$\varphi$}^{\gamma}_{\pi} \vdash
-    \triple{\ownGhost{\gamma}{q;\mathsf{T}}_{\pi}\ast P}{C}{\ownGhost{\gamma}{q';\mathsf{T}'}_{\pi} \ast Q}
-}
-\]
-\end{frame}
-\begin{frame}{How? Intuition on Invariants in Bisimulation} \scriptsize
-\[
-\inferrule[UpdIsl]{
-        \alpha~\textrm{physically atomic}\\
-        \forall s_0 \;\ldotp  \;((s;\mathsf{T})\;\overset{\mathsf{rely}^{*}}{\sqsubseteq}_\pi\;( s_0;\mathsf{T}))\; \vdash
-        \triple{ \tcbhighmath[boxrule=2pt,arc=1pt,colback=blue!10!white,colframe=blue,
-  drop fuzzy shadow=red]{\varphi(s_0)}\ast P }{\alpha}{ \exists s' \;, \;\mathsf{T}'\;\ldotp \; (s_0;\mathsf{T})\; \overset{\mathsf{guar}^{*}}{\sqsubseteq}_\pi \;(s';\mathsf{T}')  \ast 
-      \tcbhighmath[boxrule=2pt,arc=1pt,colback=blue!10!white,colframe=blue,
-  drop fuzzy shadow=red]{  \varphi(s')}\ast Q}
-    }{
-      \fbox{$\varphi$}^{\gamma}_{\pi} \vdash
-      \triple{ \ownGhost{\gamma}{s;\mathsf{T}} \ast P }
-            {\alpha}
-        { \exists \; s', \mathsf{T}' \ldotp \ownGhost{\gamma}{s';\mathsf{T}'}_{\pi} \ast Q }
-    }
-\]
-\[
-\inferrule[Bisim]{
-	\pi\sim\pi'\quad\quad 
-	q\; \epsilon_{\mathcal{S}} \;s \quad\quad q' \; \epsilon_{\mathcal{S}} \;s' \\
-	\triple{\ownGhost{\gamma}{s;\epsilon_{\overline{\mathcal{T}}}(\mathcal{T})}_{\pi'} \ast P}{C}{\ownGhost{\gamma}{s';\mathsf{T}'}_{\pi'} \ast Q}
-}{
-	\fbox{$\varphi$}^{\gamma}_{\pi} \vdash
-    \triple{\ownGhost{\gamma}{q;\mathsf{T}}_{\pi}\ast P}{C}{\ownGhost{\gamma}{q';\mathsf{T}'}_{\mathsf{\pi}} \ast Q}
-}
-\]
-\begin{itemize}
-    \item The post condition of the target state machine $\pi'$ implies the post condition of the source state machine $\pi$, e.g., \textsf{opened} 
-    \item Applying \textsc{UpdIsl} would give 
-    \begin{itemize}\scriptsize
-        \item $\varphi'(\epsilon_{\mathcal{S}}(s0)) \;\vdash \;\exists \;s'\; \ldotp \varphi'(s')$ 
-        \item \text{\scriptsize and precondition in the source STS} -- $\varphi(s0)$
-        \end{itemize}
-    \item To obtain $\exists\; s' \;\ldotp \;\varphi(s')$
-\end{itemize}
-\end{frame}
 \begin{frame}{Invariants of File Protocols} \scriptsize
 \begin{definition}[File Protocol Invariants]    
     \[
@@ -2386,35 +1771,6 @@ The bisimulation ($\mathcal{M}(\pi,\pi',\varphi,\varphi',s,\mathsf{T},\mathsf{U}
 \]
 \end{definition}
 \end{frame}
-\begin{frame}{The Law of Tolerance}\scriptsize
-        \begin{theorem}[The Law of Tolerance]
-        \[\begin{array}{l} \forall \; s' \;\ldotp\;  (s \; \mathsf{T}) \;\overset{\mathsf{rely}^{*}}{\sqsubseteq}_{\pi} \;(s';\mathsf{T}) \leftrightarrow   \tcbhighmath[boxrule=2pt,arc=1pt,colback=blue!10!white,colframe=blue,
-  drop fuzzy shadow=red]{\varphi(s') \;\vdash \;\varphi'(\epsilon_{\mathcal{S}}(s'))} \end{array}\]
-        \end{theorem}
-        \begin{itemize}
-        \item The source STS's precondition for the embedded states is stronger
-            \item $\varphi(\mathsf{flushed})$ of $\pi$ or $\varphi(\mathsf{opened})$ of $\pi$ implies $\varphi'(\textsf{opened})$ of $\pi'$
-        \end{itemize}
-\end{frame}
-\begin{frame}{Revisiting the Law of Guarantee for Invariants}\scriptsize
-    \begin{theorem}[The Law of Guarantee with Invariants]\scriptsize
-\[\begin{array}{l}
-\forall \;q' \; \ldotp \;(\epsilon_{\mathcal{S}}(s); \epsilon_{\overline{\mathcal{T}}}(\mathsf{T} )) \;  \overset{\mathsf{rely}^{*}}{\sqsubseteq}_{\pi'} (\epsilon_{\mathcal{S}}(q'); \epsilon_{\overline{\mathcal{T}}}(\mathsf{T} )) \rightarrow \\ 
-  \quad\quad\quad\quad \forall \;q'' , \; \mathsf{T}'' \;\ldotp \;(q';\epsilon_{\overline{\mathcal{T}}}(\mathsf{T} )) \; \overset{\mathsf{guar}^{*}}{\sqsubseteq}_{\pi'} \; (q'';\mathsf{T}'') \rightarrow  \\
-  \quad\quad\quad\quad\quad\quad\quad\quad \exists \;s' \; s'' \; \mathsf{T0}'\; \mathsf{T0}''\; \ldotp\; (s';\mathsf{T0}') \; \overset{\mathsf{guar}^{*}}{\sqsubseteq}_{\pi} \;(s'';\mathsf{T0}'') \; \land \\
-   \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \epsilon_{\mathcal{S}} (s') = q' \land \epsilon_{\mathcal{S}}(s'') = q'' \land \\
-   \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad (\epsilon_{\overline{\mathcal{T}}}(\mathsf{T0}' )) = (\epsilon_{\overline{\mathcal{T}}} (\mathsf{T} )) \;\land \;(\epsilon_{\mathcal{T}} (\mathsf{T0}' )) = \mathsf{T}'' \; \land \\
-   \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tcbhighmath[boxrule=2pt,arc=1pt,colback=blue!10!white,colframe=blue,
-  drop fuzzy shadow=red]{\varphi'(q'') \vdash \varphi(s'') } \end{array}\]
-        \end{theorem}
-\end{frame}
-
-\begin{frame}{Soundness}
-\begin{theorem}[Soundness]
-    The updated state from \textsc{UpdIsl} is preserved by the bisimulation.
-\end{theorem}
-\end{frame}
-
 \begin{frame}{Keeping Promises}
     \[
 \inferrule[Transfer File Write]{
@@ -2423,10 +1779,50 @@ The bisimulation ($\mathcal{M}(\pi,\pi',\varphi,\varphi',s,\mathsf{T},\mathsf{U}
 	\triple{\ownGhost{\gamma}{s;\epsilon_{\overline{\mathcal{T}}}(\mathcal{T})}_{\pi'} \ast P}{\mathsf{write}\; \ell \; \mathsf{new\_val}}{\ownGhost{\gamma}{s';\mathsf{T}'}_{\pi'} \ast Q}
 }{
 	\fbox{$\varphi_{\mathsf{distributedfile}}$}^{\gamma}_{\pi} \vdash
-    \triple{\ownGhost{\gamma}{\mathsf{opened};\mathsf{T}}_{\pi}\ast P}{C}{\ownGhost{\gamma}{q';\mathsf{T}'}_{\mathsf{\pi}} \ast Q}
+    \triple{\ownGhost{\gamma}{\mathsf{opened};\mathsf{T}}_{\pi}\ast P}{\mathsf{write}\; \ell \; \mathsf{new\_val}}{\ownGhost{\gamma}{q';\mathsf{T}'}_{\mathsf{\pi}} \ast Q}
 }
 \]
 \end{frame}
+\begin{frame}{The Law of Rely}\scriptsize
+ \begin{theorem}[The Law of Rely]\scriptsize
+            \[
+            \begin{array}{l}\forall s' .   (s;T) \overset{\mathsf{rely}^{*}}{\sqsubseteq}_{\pi}  (s';T) \leftrightarrow \\
+           \quad\quad  (\forall_{s_1,s_1',T_1} \ldotp \epsilon_{\mathcal{S}}(s ,s_1) \rightarrow \epsilon_{\mathcal{S}}(s',s'_1) \rightarrow \epsilon_{\overline{\mathcal{T}}}(T,T_1) \rightarrow ( s_1; T_1) \overset{\mathsf{rely}^{*}}{\sqsubseteq}_{\pi'} (s'_1; T_1)
+            \end{array}
+           \]
+     \end{theorem}
+     \begin{itemize}
+         \item We do not drop any client interference with capabilities $T$
+         \item Indetification of the states that are tolerant to the client interference from which the STS can take steps (Guarantee)
+         \item Bookkeeping of the client interference needed!  
+         \item Identifying the valid \emph{pre} state
+     \end{itemize}
+\end{frame}
+\begin{frame}{The Law of Guarantee}\scriptsize
+    \begin{theorem}[Guarantee Bisim without Invariants] 
+\[
+\begin{array}{l}
+\forall_{q',q, T'} \ldotp 
+    \epsilon_{\overline{\mathcal{T}}} ( T) \equiv T' \rightarrow \epsilon_{\mathcal{S}}(s,q)
+\rightarrow   (q;T')\overset{\mathsf{rely}^{*}}{\sqsubseteq}_{\pi'}(q';T') \rightarrow  \\
+\quad\quad\quad\quad \forall_{q'',T''}\ldotp (q';T')\overset{\mathsf{guar.}}{\sqsubseteq}_{\pi'}(q'';T'') \rightarrow  \\
+\quad\quad\quad\quad\quad\quad \exists_{s',s'',T'_0,T''_0} \ldotp (s';T'_0) \overset{\mathsf{guar.}}{\sqsubseteq}_{\pi} (s'';T''_0) \land \\ \quad\quad\quad\quad\quad\quad\quad\quad \epsilon_{\mathcal{S}}(s')=q' \land \epsilon_{\mathcal{S}}(s'') = q'' \land \epsilon_{\overline{\mathcal{T}}}(T'_0) \equiv T' \land \epsilon_{\overline{\mathcal{T}}}(T''_0) \equiv T''
+ \end{array}
+\]
+\end{theorem}
+\begin{itemize}
+    \item \emph{Under the embedded client interference}, the steps taken by the target STS must be countered by a one in the source STS
+    \item From target STS to source STS
+    \item Identifying the valid \emph{post} state 
+\end{itemize}
+\end{frame}
+\begin{frame}{Soundness}
+\begin{theorem}[Soundness]
+    The updated state from \textsc{UpdIsl} is preserved by the bisimulation.
+\end{theorem}
+\end{frame}
+
+
 \section{The Current and Future Directions \& Conclusions}
 \begin{frame}{Ongoing Work}
     \begin{itemize}
@@ -2454,15 +1850,368 @@ The bisimulation ($\mathcal{M}(\pi,\pi',\varphi,\varphi',s,\mathsf{T},\mathsf{U}
         \item Only Iris pluggable?
     \end{itemize}
 \end{frame}
+\makepart{Semantic Type Assertion for Deferred Memory-Reclamation Schemes \\ ESOP'19}
+\section{Deferred Memory Reclamation}
+\begin{frame}{What is Deferred Memory Reclamation?}
+    \begin{itemize}
+        \item Both \emph{reader} and \emph{writer} threads accessing to a memory location \emph{simultaneously}
+        \item The write \emph{waits} the readers that are already on the same memory location --- i.e., \emph{Grace Period}
+        \item After the grace period end, the grace period ends, i.e, the readers leave the memory location, it is safe to \emph{reclaim} the memory location
+        \item Different schemes: Hazard Pointers, Read-Copy-Update \cite{}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{RCU Semantics}\scriptsize
+\begin{figure}[H]
+ \centering
+ \begin{tikzpicture}[>=stealth',node distance=1.5cm,semithick,auto]
+ \tikzstyle{hollow node}=[circle,draw,inner sep=1]
+ \tikzstyle{sub node}=[triangle,draw,inner sep=1]
+ \tikzstyle{solid node}=[rectangle,draw,inner sep=1.5]
+
+ \tikzset{
+	red node/.style={rectangle,draw=black,fill=red,inner sep=1.5},
+ 	blue node/.style={rectangle,draw=black,inner sep=1.5},
+ 	reader node/.style={circle,draw=black,inner sep=1},
+ 	writer node/.style={circle,draw=black,inner sep=1}
+ }
+
+       \node[solid node] (R) {$R$};
+       \node[hollow node] (5) [right of=R] {$5$};
+       \node[hollow node] (8) [right of=5] {$8$};
+       \node[hollow node] (2) [right of=8] {$2$};
+       \node[hollow node] (1) [right of=2] {$1$};
+       \node[hollow node] (11) [right of=1] {$11$};
+       %\node[hollow node] (4) [right of=11] {$4$};
+       \node[reader node] (r1) [above right of= 1]  {$cr$};
+       \node[reader node] (r2)  [above left of= 1] {$cr$};
+       \node[writer node] (wp) [below of=2] {$pr$};
+       \node[writer node] (wc) [below of=11]{$cr$};
+
+     \path[->]  (R) edge node {} (5);
+     \path[->]  (5) edge node {} (8);
+     \path[->]  (8) edge node {} (2);
+    % \path[->]  (11) edge node {} (4);
+     \path[->] (2) edge [bend right] node {} (11);
+     \path[dashed,->]  (1) edge node {} (11);
+
+     \path[->]  (r1) edge node {$\textsf{tid}_{r1}$} (1);
+     \path[->]  (r2) edge node {$\textsf{tid}_{r2}$} (1);
+     \path[->]  (wp) edge node  {$\textsf{tid}_{mut}$}  (2);
+     \path[->]  (wc) edge  node  {$\textsf{tid}_{mut}$}   (11);
+ ;
+ \end{tikzpicture}
+ \caption{$\textsf{tid}_{mut}$ unlinks the node with value 1.}
+ \label{fig:unlinkedlist}
+ \end{figure}
+% After \emph{mutation} in heap, -(remove:16)-, Writer thread calls \textsf{SyncStart}-(\emph{remove:14})-to start \emph{grace-period}. Now, $\textsf{tid}_{r1}$ and $\textsf{tid}_{r1}$ become \emph{bounding-threads} which $t_{mut}$ needs to wait which is shown in \ref{fig:unlinkedlist}.
+ \begin{figure}[H]
+ \centering
+ \begin{tikzpicture}[>=stealth',node distance=1.5cm,semithick,auto]
+ \tikzstyle{hollow node}=[circle,draw,inner sep=1]
+ \tikzstyle{sub node}=[triangle,draw,inner sep=1]
+ \tikzstyle{solid node}=[rectangle,draw,inner sep=1.5]
+
+ \tikzset{
+ 	red node/.style={rectangle,draw=black,fill=red,inner sep=1.5},
+ 	blue node/.style={rectangle,draw=black,inner sep=1.5},
+ 	reader node/.style={circle,draw=black,inner sep=1},
+ 	writer node/.style={circle,draw=black,inner sep=1}
+ }
+
+       \node[solid node] (R) {$R$};
+       \node[hollow node] (5) [right of=R] {$5$};
+       \node[hollow node] (8) [right of=5] {$8$};
+       \node[hollow node] (2) [right of=8] {$2$};
+       \node[hollow node] (1) [right of=2] {$1$};
+       \node[hollow node] (11) [right of=1] {$11$};
+     %  \node[hollow node] (4) [right of=11] {$4$};
+       \node[reader node] (r1) [above right of= 1]  {$cr$};
+       \node[reader node] (r2)  [above left of= 1] {$cr$};
+
+     \path[->]  (R) edge node {} (5);
+     \path[->]  (5) edge node {} (8);
+     \path[->]  (8) edge node {} (2);
+    % \path[->]  (11) edge node {} (4);
+     \path[->] (2) edge [bend right] node {} (11);
+     \path[dotted,->]  (1) edge node {} (11);
+
+     \path[->]  (r1) edge node {$\textsf{tid}_{r1}$} (1);
+     \path[->]  (r2) edge node {$\textsf{tid}_{r2}$} (1);
+
+ ;
+ \end{tikzpicture}
+ \qquad
+ \qquad
+ \tikzset{
+     font=\sffamily,
+    BLOCK/.style={
+         draw,
+        align=center,
+         text height=0.4cm,
+         draw=red!50,
+         fill=red!20,
+         rectangle split,
+         rectangle split horizontal,
+         rectangle split parts=#1,
+     }
+ }
+ \begin{tikzpicture}
+     \node (h1) {to-free list};
+     \node[BLOCK=3, below=0 of h1]{
+       \nodepart{one}...\nodepart{two}( F[ s(1,$\textsf{tid}_{mut}$) $\rightharpoonup$ {$\textsf{tid}_{r1}$, $\textsf{tid}_{r2}$} ]
+         \nodepart{three}...};
+ \end{tikzpicture}
+
+ \caption{Bounding threads, $\textsf{tid}_{r1}$ $\textsf{tid}_{r1}$. }
+ \label{fig:unlinkedlistnomut}
+ \end{figure}
+% Grace period lasts until \textsf{SyncStop} returns-(\emph{remove:15})-. \textsf{SyncStop} blocks the execution of the writer thread until $\textsf{tid}_{r1}$ and $\textsf{tid}_{r2}$ exit \textsf{Read Block} as shown in figure ~\ref{fig:unlinkedlistnomut}. We use mapping, $F$, to from mutated memory locations to reader thread identifiers active when the mutation occurs.  
+\end{frame}
+\begin{frame}{RCU Semantics}\scriptsize
+ \begin{figure}[H]
+ \centering
+ \begin{tikzpicture}[>=stealth',node distance=1.5cm,semithick,auto]
+ \tikzstyle{hollow node}=[circle,draw,inner sep=1]
+ \tikzstyle{sub node}=[triangle,draw,inner sep=1]
+ \tikzstyle{solid node}=[rectangle,draw,inner sep=1.5]
+
+ \tikzset{
+ 	red node/.style={rectangle,draw=black,fill=red,inner sep=1.5},
+ 	blue node/.style={rectangle,draw=black,inner sep=1.5},
+ 	reader node/.style={circle,draw=black,inner sep=1},
+ 	writer node/.style={circle,draw=green,inner sep=1}
+ }
+
+       \node[solid node] (R) {$R$};
+       \node[hollow node] (5) [right of=R] {$5$};
+       \node[hollow node] (8) [right of=5] {$8$};
+       \node[hollow node] (2) [right of=8] {$2$};
+       \node[hollow node] (1) [right of=2] {$1$};
+       \node[hollow node] (11) [right of=1] {$11$};
+       %\node[hollow node] (4) [right of=11] {$4$};
+
+     \path[->]  (R) edge node {} (5);
+     \path[->]  (5) edge node {} (8);
+     \path[->]  (8) edge node {} (2);
+     %\path[->]  (11) edge node {} (4);
+     \path[->] (2) edge [bend right] node {} (11);
+     \path[dotted,->]  (1) edge node {} (11);
+
+
+ ;
+ \end{tikzpicture}
+ \qquad
+ \qquad
+ \tikzset{
+     font=\sffamily,
+     BLOCK/.style={
+         draw,
+         align=center,
+         text height=0.4cm,
+         draw=red!50,
+         fill=red!20,
+         rectangle split,
+         rectangle split horizontal,
+         rectangle split parts=#1,
+     }
+ }
+ \begin{tikzpicture}
+     \node (h1) {to-free list};
+     \node[BLOCK=3, below=0 of h1]{
+       \nodepart{one}...\nodepart{two} F[s(1,\textsf{tid}) $\rightharpoonup$ $\emptyset$ )
+         \nodepart{three}...};
+ \end{tikzpicture}
+ \caption{Bounding threads, $\textsf{tid}_{r1}$ and $\textsf{tid}_{r2}$ exit \textsf{ReadBlock}. }
+ \label{fig:prereclaim}
+ \end{figure}
+% In figure \ref{fig:prereclaim}, $\textsf{tid}_{r1}$ and $\textsf{tid}_{r2}$ exit \textsf{ReadBlock} so that \textsf{Free} can be called to reclaim the memory. Once \textsf{Free} returns, the memory location is reclaimed as shown in figure \ref{fig:reclaimed}. 
+ \begin{figure}[H]
+ \centering
+ \begin{tikzpicture}[>=stealth',node distance=1.5cm,semithick,auto]
+ \tikzstyle{hollow node}=[circle,draw,inner sep=1.5]
+ \tikzstyle{sub node}=[triangle,draw,inner sep=1]
+ \tikzstyle{solid node}=[rectangle,draw,inner sep=1.5]
+
+ \tikzset{
+ 	red node/.style={rectangle,draw=red,fill=red,inner sep=1.5},
+ 	blue node/.style={rectangle,draw=black,inner sep=1.5},
+ 	reader node/.style={circle,draw=black,inner sep=1},
+ 	writer node/.style={circle,draw=green,inner sep=1}
+ }
+
+       \node[solid node] (R) {$R$};
+       \node[hollow node] (5) [right of=R] {$5$};
+       \node[hollow node] (8) [right of=5] {$8$};
+       \node[hollow node] (2) [right of=8] {$2$};
+       \node[hollow node] (11) [right of=2] {$11$};
+ %      \node[hollow node] (4) [right of=11] {$4$};
+
+     \path[->]  (R) edge node {} (5);
+     \path[->]  (5) edge node {} (8);
+     \path[->]  (8) edge node {} (2);
+  %   \path[->]  (11) edge node {} (4);
+     \path[->] (2) edge node {} (11);
+ ;
+ \end{tikzpicture}
+ \caption{ Reclaimed the node 1}
+ \label{fig:reclaimed}
+ \end{figure}
+% Another interesting mutation on the heap of the \textsf{RCU} bag is \emph{fresh-node-linking} case which shows up in \emph{add} method. The mutator thread, $t_{mut}$, allocates a fresh node, $n$, in the heap-(\emph{add:8})-and links the newly allocated node the list-(\emph{add:17}).
+% We see in figure \ref{fig:freshlist} that the linked list is in a state where there exists two entry points, $R$ and $n$, to it. This seems to be a violation of well-formedness of the linked list at first. However, the dash-dot type--\emph{fresh}--of link in between fresh node and \textsf{RCU} data structure still preserves well-formedness as straight arrows are the only types--\emph{iterator}-- that one can use to access to the \textsf{RCU} data structure. The dash-dot type turns into a stright arrow in figure \ref{fig:freshlistlinked} once the freshly allocated node, $n$, is linked to the \textsf{RCU} list.
+\end{frame}
+\begin{frame}{Type Assertions for RCU}
+\begin{figure*}[t!]
+\begin{tabular}{p{0.47\textwidth}p{0.47\textwidth}}
+\begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+struct BagNode{
+  int data;
+  BagNode<rcuItr> Next;
+}
+BagNode<rcuRoot> head;
+void add(int toAdd){
+WriteBegin;
+BagNode nw = new;
+$\assert{nw\mathsf{:rcuFresh}  \{\}}$
+nw.data = toAdd;
+$\assert{head\mathsf{:rcuRoot},par\mathsf{:undef}, cur\mathsf{:undef}}$
+BagNode<rcuItr> par,cur = head;
+$\assert{head\mathsf{:rcuRoot},par\mathsf{:rcuItr} \epsilon  \{\}}$
+$\assert{cur\mathsf{:rcuItr} \epsilon  \{\}}$
+cur = par.Next;
+$\assert{cur\mathsf{:rcuItr} Next \{\}}$
+$\assert{par\mathsf{:rcuItr} \epsilon \{Next\mapsto cur\}}$
+while(cur.Next != null){
+  $\assert{cur\mathsf{:rcuItr} (Next)^{k}.Next \{\}}$
+  $\assert{par\mathsf{:rcuItr}  (Next)^{k} \{Next \mapsto cur\}}$
+  par = cur;
+  cur = par.Next;
+  $\assert{cur\mathsf{:rcuItr} (Next)^{k}.Next.Next \{\}}$
+  $\assert{par\mathsf{:rcuItr}(Next)^{k}.Next \{Next \mapsto cur\}}$
+}
+$\assert{nw\mathsf{:rcuFresh}  \{\}}$
+$\assert{cur\mathsf{:rcuItr} (Next)^{k}.Next \{Next\mapsto null\}}$
+$\assert{par\mathsf{:rcuItr}  (Next)^{k} \{Next \mapsto cur\}}$
+nw.Next= null;
+$\assert{nw\mathsf{:rcuFresh}  \{Next\mapsto null\}}$
+$\assert{cur\mathsf{:rcuItr} (Next)^{k}.Next \{Next \mapsto null\} }$
+cur.Next=nw;
+$\assert{nw\mathsf{:rcuItr}  (Next)^{k}.Next.Next  \{Next\mapsto null\}}$
+$\assert{cur\mathsf{:rcuItr} (Next)^{k}.Next \{Next \mapsto nw\} }$
+WriteEnd;
+}
+\end{lstlisting}&
+\begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+void remove(int toDel){
+WriteBegin;
+$\assert{head\mathsf{:rcuRoot},par:\mathsf{undef}, cur\mathsf{:undef}}$
+BagNode<rcuItr> par,cur = head;
+$\assert{head\mathsf{:rcuRoot},par\mathsf{:rcuItr}\epsilon  \{\},cur\mathsf{:rcuItr} \epsilon  \{\}}$
+cur = par.Next;
+$\assert{cur\mathsf{:rcuItr} Next \{\}}$
+$\assert{par\mathsf{:rcuItr} \epsilon \{Next\mapsto cur\}}$
+while(cur.Next != null&&cur.data != toDel)
+{
+  $\assert{cur\mathsf{:rcuItr} (Next)^{k}.Next \{\}}$
+  $\assert{par\mathsf{:rcuItr}  (Next)^{k} \{Next \mapsto cur\}}$
+  par = cur;
+  cur = par.Next;
+  $\assert{cur\mathsf{:rcuItr} (Next)^{k}.Next.Next \{\}}$
+  $\assert{par\mathsf{:rcuItr}  (Next)^{k}.Next \{Next \mapsto cur\}}$
+}
+$\assert{nw\mathsf{:rcuFresh} \{\}}$
+$\assert{par\mathsf{:rcuItr}  (Next)^{k} \{Next \mapsto cur\}}$
+$\assert{cur\mathsf{:rcuItr} (Next)^{k}.Next \{\}}$
+BagNode<rcuItr> curl = cur.Next;
+$\assert{cur\mathsf{:rcuItr} (Next)^{k}.Next \{Next \mapsto curl\}}$
+$\assert{curl\mathsf{:rcuItr} (Next)^{k}.Next.Next \{\}}$
+par.Next = curl;
+$\assert{par\mathsf{:rcuItr}  (Next)^{k} \{Next \mapsto curl\}}$
+$\assert{cur\mathsf{:unlinked}}$
+$\assert{cur\mathsf{:rcuItr} (Next)^{k}.Next \{\}}$
+SyncStart;
+SyncStop;
+$\assert{cur\mathsf{:freeable}}$
+Free(cur);
+$\assert{cur\mathsf{:undef}}$
+WriteEnd;
+}
+\end{lstlisting}
+%\end{minipage}
+%\end{tabular*}
+\end{tabular}
+\vspace{-2em}
+\caption{RCU client: singly linked list based bag implementation.}
+\label{fig:rculist}
+\end{figure*}
+\end{frame}
+
+\begin{frame}{A Taste of Soundness on Type System for RCU}
+\begin{itemize}
+    \item Soundness on top of Views Framework (Dinsdale-Young et.al. ~\cite{})
+    \begin{itemize}
+        \item Logical state with its observation-map , free-list etc. 
+        \item Denotation of types encoding the post-environment of any type accurately
+        \[\llbracket \Gamma,\, x:\textsf{rcuItr} \, \rho \, \mathcal{N}[y:\textsf{rcuItr}]  \rrbracket_{M,tid}\]
+    \end{itemize}
+    \item Global Invariants
+    \begin{itemize}
+        \item Unlinked Reachability:
+        \item Delayed Ownership Transfer and Reader in Freelist:
+    \end{itemize}
+    \item Discharging these invariants once as a part of soundness
+    \begin{itemize}
+        \item No need to prove them for each different client
+    \end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}{Remarks}
+    \begin{itemize}
+        \item Simpler that full-blown program logics: Tassarotti et al. ~\cite{}, Fu et.al. ~\cite{}, Gotsman et.al. ~\cite{}
+        \item The first general operational model for RCU-based memory management
+        \item Based on our suitable abstractions for RCU in the operational semantics 
+        \begin{itemize}
+            \item Decoupling the memory-safety proofs from the underlying reclamation model
+            \item Similar is done for correctness by Meyer and Wolff ~\cite{}
+        \end{itemize}
+        \item Applicability/Usability
+        \begin{itemize}
+            \item The first safety proof RCU client Citrus Binary Search Tree (Arbel ~\cite{})
+            \item Linked-list based bag implementation (McKenney Technical Report 2015)
+        \end{itemize}
+        \item More type rules in the paper
+        \begin{itemize}
+            \item Refinement rules for control flows 
+            \item A simple type system for readers
+            \item Entering and exiting read/write-side critical sections
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}{Future Directions}
+    \begin{itemize}
+        \item Deploying it as Clang front-end
+        \begin{itemize}
+            \item Abstract operational semantics can handle “classical RCU”
+            \item But optimized “batch lists” in Linux kernel? Refinement with our abstract model?
+        \end{itemize}
+        \item Rust ownership
+        \begin{itemize}
+            \item When published Rust's ownership was not able to handle RCU-like programming pattern
+            \item Now there is a set of RCU types
+        \end{itemize}  
+        \item Go adopted similar pattern in the existence of garbage-collector
+        \begin{itemize}
+            \item Captured by our operational semantics 
+            \item Async-free + Free list
+        \end{itemize}
+        \item Beyond memory-safety? Tolerance to \emph{stale data}
+    \end{itemize}
+\end{frame}
 %------------------------------------------------
 %\begin{frame}{References}\scriptsize
     \scriptsize
     \bibliography{reference.bib}
     \bibliographystyle{ACM-Reference-Format}
-%\end{frame}
-\begin{frame}
-    \Huge{\centerline{\textbf{The End}}}
-\end{frame}
 
 %----------------------------------------------------------------------------------------
 
